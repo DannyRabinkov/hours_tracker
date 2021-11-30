@@ -9,6 +9,9 @@ export function validateSignIn() {
     //phone is valid
     //pass is present
     //send to node to validateUser(phone,pass)
+    return {
+      success: true,
+    };
   } else {
     return {
       success: false,

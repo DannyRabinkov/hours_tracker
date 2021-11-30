@@ -2,13 +2,20 @@ import React from "react";
 import { validateSignIn } from "../helpers/userHelper.js";
 
 export function SignIn() {
+  let handleClick = (e) => {
+    e.preventDefault();
+    let res = validateSignIn();
+    if (res.success) {
+      alert("redirect to time page / admin panel by res.user.role");
+    }
+  };
+
   return (
     <div>
       <h1>Sign-In</h1>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          validateSignIn();
+          handleClick(e);
         }}
       >
         <input type="text" maxLength="10" id="user-phone" required />
