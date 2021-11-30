@@ -11,6 +11,9 @@ export function validateSignIn() {
     //send to node to validateUser(phone,pass)
     return {
       success: true,
+      user: {
+        role: "employee",
+      },
     };
   } else {
     return {
