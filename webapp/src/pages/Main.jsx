@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import "../helpers/timeCountHelper.js";
+import { controlTime, saveTime } from "../helpers/timeCountHelper.js";
 
 export function Main() {
   const [isRunning, setRunning] = useState(false);
 
   return (
-    <container>
+    <Container>
       <h1>Main Page</h1>
       <div className="container">
         <p>
@@ -15,6 +18,7 @@ export function Main() {
           id="btn-start"
           hidden={isRunning ? "hidden" : ""}
           onClick={() => {
+            controlTime();
             setRunning(true);
           }}
         >
@@ -25,11 +29,13 @@ export function Main() {
           hidden={isRunning ? "" : "hidden"}
           onClick={() => {
             setRunning(false);
+            controlTime();
+            saveTime();
           }}
         >
           Start/Pause Working
         </button>
       </div>
-    </container>
+    </Container>
   );
 }
