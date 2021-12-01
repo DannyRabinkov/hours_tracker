@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
+import { ShiftCont } from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
 import { controlTime, saveTime } from "../helpers/timeCountHelper.js";
 
 export function Main() {
   const [isRunning, setRunning] = useState(false);
+  const [shiftArr, setShifts] = useState([]);
+
+  let createShiftStamp = () => {
+    setRunning(false);
+    controlTime();
+    let shiftObj = saveTime();
+    setShifts([...shiftArr, shiftObj]);
+  };
 
   return (
     <Container>
@@ -27,15 +36,12 @@ export function Main() {
         <button
           id="btn-pause"
           hidden={isRunning ? "" : "hidden"}
-          onClick={() => {
-            setRunning(false);
-            controlTime();
-            saveTime();
-          }}
+          onClick={() => createShiftStamp()}
         >
           Start/Pause Working
         </button>
       </div>
+      <ShiftCont shift={shiftArr} />
     </Container>
   );
 }

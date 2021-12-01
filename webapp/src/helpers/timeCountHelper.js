@@ -73,5 +73,5 @@ export function saveTime() {
     shiftTime: totalTime,
   };
 
-  console.log(shift);
+  return shift;
 }
