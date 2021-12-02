@@ -1,13 +1,15 @@
 const db = require("../models");
 
 const User = db.users;
-const Session = db.sessions;
 const Role = db.values_role;
 
-const RoleArr = roleCall();
+// holds array of roles. use laster when returning user on role field
+//RoleArr[res.user.role].value
+const RoleArr = ["employee", "employer"]; //roleCall();
 
 async function roleCall() {
   /*   return await Role.findAll({});
+      TODO get all rows from Roles table -> return it as array
    */
 }
 
@@ -22,13 +24,11 @@ const addUser = async (req, res) => {
 
   const user = await User.create(info);
   res.status(200).send(user);
-  console.log(user);
 };
 
 //get all users
 const getAllUsers = async (req, res) => {
   let users = await User.findAll({});
-  res.send(users);
   res.status(200).send(users);
 };
 
@@ -36,6 +36,7 @@ const getAllUsers = async (req, res) => {
 const getOneUser = async (req, res) => {
   let id = req.params.id;
   let user = await User.findOne({ where: { id: id } });
+  user.Role = RoleArr[user.Role];
   res.status(200).send(user);
 };
 
