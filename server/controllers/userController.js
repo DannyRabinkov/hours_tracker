@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Sequelize } = require("sequelize");
 
 const User = db.users;
 const Role = db.values_role;
@@ -27,8 +28,16 @@ const addUser = async (req, res) => {
 };
 
 //get all users
-const getAllUsers = async (req, res) => {
-  let users = await User.findAll({});
+const getAllEmployees = async (req, res) => {
+  // get employee role id from arr
+  let employeeRoleId = RoleArr.indexOf("employee");
+  let users = await User.findAll({
+    where: {
+      Role: {
+        [Sequelize.Op.like]: `%${employeeRoleId}%`,
+      },
+    },
+  });
   res.status(200).send(users);
 };
 
@@ -57,7 +66,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   addUser,
-  getAllUsers,
+  getAllEmployees,
   getOneUser,
   updateUser,
   deleteUser,
