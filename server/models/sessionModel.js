@@ -3,11 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     User_ID: {
       type: DataTypes.INTEGER,
     },
-    Created_On: {
-      type: DataTypes.DATE,
-    },
     Shift_Duration: {
-      type: DataTypes.TIME,
+      type: DataTypes.STRING,
     },
   });
 

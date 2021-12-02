@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const router = require("./routes/userRouter.js");
+const users = require("./routes/userRouter.js");
+const sessions = require("./routes/sessionRouter.js");
 
 const app = express();
 
@@ -11,7 +12,8 @@ let corOptions = {
 app.use(cors(corOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/users", router);
+app.use("/api/users", users);
+app.use("/api/session", sessions);
 
 //Test server running
 app.get("/", (req, res) => {
