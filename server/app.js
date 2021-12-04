@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const users = require("./routes/userRouter.js");
 const sessions = require("./routes/sessionRouter.js");
+const roles = require("./routes/roleRouter.js");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", users);
 app.use("/api/session", sessions);
+app.use("/api/roles", roles);
 
 //Test server running
 app.get("/", (req, res) => {

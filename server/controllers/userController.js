@@ -2,7 +2,7 @@ const db = require("../models");
 const { Sequelize } = require("sequelize");
 
 const User = db.users;
-const Role = db.values_role;
+const Role = db.valuesRole;
 
 // holds array of roles. use laster when returning user on role field
 //RoleArr[res.user.role].value
