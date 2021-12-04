@@ -18,6 +18,7 @@ const empSession = async (req, res) => {
   let id = req.params.id;
   let sessions = await Session.findAll({
     where: { User_ID: id },
+    attributes: ["User_Id", "Shift_Duration", "createdAt"],
   });
   res.status(200).send(sessions);
 };
