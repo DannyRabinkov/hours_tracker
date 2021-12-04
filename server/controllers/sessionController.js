@@ -14,6 +14,16 @@ const addSession = async (req, res) => {
   res.status(200).send(session);
 };
 
+//get employee sessions
+const empSession = async (req, res) => {
+  let id = req.params.id;
+  let sessions = await Session.findAll({
+    where: { User_ID: id },
+  });
+  res.status(200).send(sessions);
+};
+
 module.exports = {
   addSession,
+  empSession,
 };

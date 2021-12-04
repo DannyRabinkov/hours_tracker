@@ -45,7 +45,7 @@ const getAllEmployees = async (req, res) => {
 const getOneUser = async (req, res) => {
   let id = req.params.id;
   let user = await User.findOne({ where: { id: id } });
-  user.Role = RoleArr[user.Role];
+  /* user.Role = RoleArr[user.Role]; */
   res.status(200).send(user);
 };
 

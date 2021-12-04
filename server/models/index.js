@@ -1,5 +1,6 @@
 const dbConfig = require("../config/dbConfig.js");
 const { DataTypes, Sequelize } = require("sequelize");
+const _ = require("lodash");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -30,7 +31,8 @@ db.sequelize = sequelize;
 
 db.users = require("./userModel.js")(sequelize, DataTypes);
 db.sessions = require("./sessionModel.js")(sequelize, DataTypes);
-db.values_role = require("./valueRoleModel.js"); /*(sequelize, DataTypes); */
+db.values_role = require("./valueRoleModel.js");
+sequelize, DataTypes;
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("re-sync Done!");
