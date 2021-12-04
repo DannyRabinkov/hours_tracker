@@ -31,21 +31,44 @@ const addUser = async (req, res) => {
 const getAllEmployees = async (req, res) => {
   // get employee role id from arr
   let employeeRoleId = RoleArr.indexOf("employee");
+
   let users = await User.findAll({
     where: {
       Role: {
         [Sequelize.Op.like]: `%${employeeRoleId}%`,
       },
     },
+    attributes: ["Role", "Phone", "Password", "Name"],
   });
+
+  res.status(200).send(users);
+};
+
+//get all employers
+const getAllEmployers = async (req, res) => {
+  // get employee role id from arr
+  let employeeRoleId = RoleArr.indexOf("employer");
+
+  let users = await User.findAll({
+    where: {
+      Role: {
+        [Sequelize.Op.like]: `%${employeeRoleId}%`,
+      },
+    },
+    attributes: ["Role", "Phone", "Password", "Name"],
+  });
+
   res.status(200).send(users);
 };
 
 //get single user
 const getOneUser = async (req, res) => {
   let id = req.params.id;
-  let user = await User.findOne({ where: { id: id } });
-  /* user.Role = RoleArr[user.Role]; */
+  let user = await User.findOne({
+    where: { id: id },
+    attributes: ["Role", "Phone", "Password", "Name"],
+  });
+  user.Role = RoleArr[user.Role];
   res.status(200).send(user);
 };
 
@@ -67,6 +90,7 @@ const deleteUser = async (req, res) => {
 module.exports = {
   addUser,
   getAllEmployees,
+  getAllEmployers,
   getOneUser,
   updateUser,
   deleteUser,
