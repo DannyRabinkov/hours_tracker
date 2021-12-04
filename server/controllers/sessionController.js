@@ -1,7 +1,6 @@
 const db = require("../models");
 
 const Session = db.sessions;
-const User = db.users;
 
 //create session
 const addSession = async (req, res) => {
