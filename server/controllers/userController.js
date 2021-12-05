@@ -103,6 +103,7 @@ const login = async (req, res) => {
   if (!validPassword) {
     return res.status(400).send("Invalid password");
   }
+
   res.status(200).send(user);
 };
 
