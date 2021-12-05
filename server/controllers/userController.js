@@ -24,6 +24,7 @@ const addUser = async (req, res) => {
       .send("User with this phone already exists, try again");
 
   const user = await User.create(info);
+
   res.status(200).send(user);
 };
 
