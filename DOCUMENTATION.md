@@ -20,6 +20,20 @@ The libraries I used for the server are:
 - nodemon
 
 
+ROUTES:
+
+create employee/employer: (POST) http://localhost:3000/api/users/addUser
+login: (POST) http://localhost:3000/api/users/login
+get all employees: (GET) http://localhost:3000/api/users/allEmployees/
+get one employee: (GET) http://localhost:3000/api/users/'enter-id-here'
+update employee: (PUT) http://localhost:3000/api/users/'enter-id-here'
+get employers: (GET) http://localhost:3000/api/users/employers
+delete employee: (DELETE) http://localhost:3000/api/users/'enter-id-here'
+add working session: (POST) http://localhost:3000/api/session/addSession
+get employee's all sessions: (GET) http://localhost:3000/api/session/'enter-id-here'
+
+
+
 NOTES:
 - Unfortunately I haven't managed the tables association yet so altho the models and the route to the Role-Value table exists, I didn't used it.
 - There is no authentication YET but will be soon with "jwt".     
