@@ -1,5 +1,6 @@
 const db = require("../models");
 const { body, validationResult } = require("express-validator/check");
+const bcrypt = require("bcrypt");
 
 const User = db.users;
 
@@ -23,8 +24,9 @@ const addUser = async (req, res) => {
       .status(400)
       .send("User with this phone already exists, try again");
 
+  let salt = await bcrypt.genSalt(10);
+  info.Password = await bcrypt.hash(info.Password, salt);
   const user = await User.create(info);
-
   res.status(200).send(user);
 };
 
@@ -91,6 +93,19 @@ const validate = (method) => {
   }
 };
 
+//login user
+const login = async (req, res) => {
+  // check if the phone exists
+  let user = await User.findOne({ where: { Phone: req.body.Phone } });
+  if (!user) return res.status(400).send("Invalid Phone");
+  //check if the password is correct
+  const validPassword = await bcrypt.compare(req.body.Password, user.Password);
+  if (!validPassword) {
+    return res.status(400).send("Invalid password");
+  }
+  res.status(200).send(user);
+};
+
 module.exports = {
   addUser,
   getAllEmployees,
@@ -99,4 +114,5 @@ module.exports = {
   updateUser,
   deleteUser,
   validate,
+  login,
 };

@@ -6,6 +6,7 @@ router.post(
   userController.validate("createUser"),
   userController.addUser
 );
+router.post("/login", userController.login);
 router.get("/allEmployees", userController.getAllEmployees);
 router.get("/employers", userController.getAllEmployers);
 router.get("/:id", userController.getOneUser);
