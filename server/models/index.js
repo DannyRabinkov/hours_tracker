@@ -31,7 +31,6 @@ db.sequelize = sequelize;
 
 db.users = require("./userModel.js")(sequelize, DataTypes);
 db.sessions = require("./sessionModel.js")(sequelize, DataTypes);
-db.valuesRole = require("./valueRoleModel.js")(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("re-sync Done!");

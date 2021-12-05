@@ -3,6 +3,7 @@ const cors = require("cors");
 const users = require("./routes/userRouter.js");
 const sessions = require("./routes/sessionRouter.js");
 const roles = require("./routes/roleRouter.js");
+const expressValidator = require("express-validator");
 
 const app = express();
 
@@ -10,6 +11,7 @@ let corOptions = {
   origin: "http://localhost:8081",
 };
 
+app.use(expressValidator());
 app.use(cors(corOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

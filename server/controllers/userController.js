@@ -1,21 +1,16 @@
 const db = require("../models");
-const { Sequelize } = require("sequelize");
+const { body, validationResult } = require("express-validator/check");
 
 const User = db.users;
-const Role = db.valuesRole;
-
-// holds array of roles. use laster when returning user on role field
-//RoleArr[res.user.role].value
-const RoleArr = ["employee", "employer"]; //roleCall();
-
-async function roleCall() {
-  /*   return await Role.findAll({});
-      TODO get all rows from Roles table -> return it as array
-   */
-}
 
 //create user
 const addUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(422).json({ errors: errors.array() });
+    return;
+  }
+
   let info = {
     Phone: req.body.Phone,
     Role: req.body.Role,
@@ -29,14 +24,9 @@ const addUser = async (req, res) => {
 
 //get all users
 const getAllEmployees = async (req, res) => {
-  // get employee role id from arr
-  let employeeRoleId = RoleArr.indexOf("employee");
-
   let users = await User.findAll({
     where: {
-      Role: {
-        [Sequelize.Op.like]: `%${employeeRoleId}%`,
-      },
+      Role: "employee",
     },
     attributes: ["Role", "Phone", "Password", "Name"],
   });
@@ -46,14 +36,9 @@ const getAllEmployees = async (req, res) => {
 
 //get all employers
 const getAllEmployers = async (req, res) => {
-  // get employee role id from arr
-  let employeeRoleId = RoleArr.indexOf("employer");
-
   let users = await User.findAll({
     where: {
-      Role: {
-        [Sequelize.Op.like]: `%${employeeRoleId}%`,
-      },
+      Role: "employer",
     },
     attributes: ["Role", "Phone", "Password", "Name"],
   });
@@ -87,6 +72,19 @@ const deleteUser = async (req, res) => {
   res.status(200).send("User is deleted!");
 };
 
+const validate = (method) => {
+  switch (method) {
+    case "createUser": {
+      return [
+        body("Name", "Name doesn't exists").exists().isString(),
+        body("Password", "Password doesn't exists").exists(),
+        body("Phone").optional().isInt(),
+        body("Role").optional().isIn(["employee", "employer"]),
+      ];
+    }
+  }
+};
+
 module.exports = {
   addUser,
   getAllEmployees,
@@ -94,4 +92,5 @@ module.exports = {
   getOneUser,
   updateUser,
   deleteUser,
+  validate,
 };
