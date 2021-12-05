@@ -17,6 +17,11 @@ const addUser = async (req, res) => {
     Password: req.body.Password,
     Name: req.body.Name,
   };
+  let existsUser = await User.findOne({ where: { Phone: req.body.Phone } });
+  if (existsUser)
+    return res
+      .status(400)
+      .send("User with this phone already exists, try again");
 
   const user = await User.create(info);
   res.status(200).send(user);
@@ -28,7 +33,7 @@ const getAllEmployees = async (req, res) => {
     where: {
       Role: "employee",
     },
-    attributes: ["Role", "Phone", "Password", "Name"],
+    attributes: ["id", "Role", "Phone", "Password", "Name"],
   });
 
   res.status(200).send(users);
@@ -53,7 +58,7 @@ const getOneUser = async (req, res) => {
     where: { id: id },
     attributes: ["Role", "Phone", "Password", "Name"],
   });
-  user.Role = RoleArr[user.Role];
+
   res.status(200).send(user);
 };
 
