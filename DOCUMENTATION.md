@@ -36,7 +36,7 @@ ROUTES:
 
 NOTES:
 - Unfortunately I haven't managed the tables association yet so altho the models and the route to the Role-Value table exists, I didn't used it.
-- There is no authentication YET but will be soon with "jwt".     
+
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     
