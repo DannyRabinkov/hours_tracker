@@ -4,7 +4,7 @@ import { ShiftCont } from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
 import { controlTime, saveTime } from "../helpers/timeCountHelper.js";
 
-export function Main() {
+function Main() {
   const [isRunning, setRunning] = useState(false);
   const [shiftArr, setShifts] = useState([]);
 
@@ -45,3 +45,5 @@ export function Main() {
     </Container>
   );
 }
+
+export default Main;

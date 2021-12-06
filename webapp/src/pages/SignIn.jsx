@@ -1,33 +1,53 @@
 import React from "react";
-import { validateSignIn } from "../helpers/userHelper.js";
+import { Redirect } from "react-router-dom";
+import { useState } from "react";
+import Axios from "axios";
+import { Main } from "./Main";
 
-export function SignIn() {
-  let handleClick = (e) => {
-    e.preventDefault();
-    let res = validateSignIn();
-    if (res.success) {
-      alert("redirect to time page / admin panel by res.user.role");
-    }
+function SignIn() {
+  const [signed, setSigned] = useState(false);
+  const [phone, setLoginPhone] = useState("");
+  const [password, setLoginPassword] = useState("");
+
+  const login = () => {
+    Axios.post("http://localhost:3000/api/users/login", {
+      Phone: phone,
+      Password: password,
+    }).then(() => {
+      alert("successful login!");
+      setSigned(true);
+    });
   };
 
   return (
-    <div>
+    <>
       <h1>Sign-In</h1>
-      <form
-        onSubmit={(e) => {
-          handleClick(e);
-        }}
-      >
-        <input type="text" maxLength="10" id="user-phone" required />
+      <div className="form">
+        <label>Phone: </label>
         <input
-          type="password"
-          minLength="4"
-          maxLength="50"
-          id="user-pass"
-          required
+          type="text"
+          name="phone"
+          placeholder="Enter Phone"
+          onChange={(e) => {
+            setLoginPhone(e.target.value);
+          }}
         />
-        <input type="submit" value="login" />
-      </form>
-    </div>
+        <br />
+        <label>Password: </label>
+        <input
+          type="text"
+          name="Password"
+          placeholder="Password"
+          onChange={(e) => {
+            e.preventDefault();
+            setLoginPassword(e.target.value);
+          }}
+        />{" "}
+        <br />
+        <button onClick={login}> Sign-in </button>
+      </div>
+    </>
   );
 }
+
+export default SignIn;
