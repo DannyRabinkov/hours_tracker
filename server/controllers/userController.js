@@ -87,7 +87,7 @@ const validate = (method) => {
         body("Name", "Name doesn't exists").exists().isString(),
         body("Password", "Password doesn't exists").exists(),
         body("Phone").optional().isInt(),
-        body("Role").optional().isIn(["employee", "employer"]),
+        body("Role").optional().isString(),
       ];
     }
   }

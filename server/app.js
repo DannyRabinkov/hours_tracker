@@ -8,7 +8,7 @@ const expressValidator = require("express-validator");
 const app = express();
 
 let corOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:3001",
 };
 
 app.use(expressValidator());
