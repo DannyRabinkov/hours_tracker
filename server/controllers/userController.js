@@ -75,8 +75,8 @@ const updateUser = async (req, res) => {
 
 //delete user by id
 const deleteUser = async (req, res) => {
-  let id = req.params.id;
-  await User.destroy({ where: { id: id } });
+  let Phone = req.params.Phone;
+  await User.destroy({ where: { Phone: Phone } });
   res.status(200).send("User is deleted!");
 };
 
