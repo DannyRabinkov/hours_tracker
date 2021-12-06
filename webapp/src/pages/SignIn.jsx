@@ -22,29 +22,39 @@ function SignIn() {
   return (
     <>
       <h1>Sign-In</h1>
-      <div className="form">
-        <label>Phone: </label>
-        <input
-          type="text"
-          name="phone"
-          placeholder="Enter Phone"
-          onChange={(e) => {
-            setLoginPhone(e.target.value);
-          }}
-        />
-        <br />
-        <label>Password: </label>
-        <input
-          type="text"
-          name="Password"
-          placeholder="Password"
-          onChange={(e) => {
-            e.preventDefault();
-            setLoginPassword(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <button onClick={login}> Sign-in </button>
+      <div className="container">
+        <div className="form">
+          <label>Phone: </label>
+          <input
+            type="text"
+            name="phone"
+            placeholder="Enter Phone"
+            onChange={(e) => {
+              setLoginPhone(e.target.value);
+            }}
+          />
+          <br />
+          <label>Password: </label>
+          <input
+            type="text"
+            name="Password"
+            placeholder="Password"
+            onChange={(e) => {
+              e.preventDefault();
+              setLoginPassword(e.target.value);
+            }}
+          />{" "}
+          <br />
+          <button
+            onClick={() => {
+              login();
+            }}
+            to="/Admin"
+          >
+            {" "}
+            Sign-in{" "}
+          </button>
+        </div>
       </div>
     </>
   );

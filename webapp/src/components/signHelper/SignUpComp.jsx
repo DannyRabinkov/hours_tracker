@@ -16,6 +16,7 @@ function SignUpComp() {
       Name: name,
     }).then(() => {
       alert("employee created successfuly!!");
+      window.location.reload(false);
     });
   };
   return (
