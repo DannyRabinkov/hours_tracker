@@ -28,7 +28,7 @@ ROUTES:
 - get one employee: (GET) http://localhost:3000/api/users/'enter-id-here'
 - update employee: (PUT) http://localhost:3000/api/users/'enter-id-here'
 - get employers: (GET) http://localhost:3000/api/users/employers
-- delete employee: (DELETE) http://localhost:3000/api/users/'enter-id-here'
+- delete employee: (DELETE) http://localhost:3000/api/users/'enter-Phone-here'
 - add working session: (POST) http://localhost:3000/api/session/addSession
 - get employee's all sessions: (GET) http://localhost:3000/api/session/'enter-id-here'
 
