@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { ShiftCont } from "../components/shifts/ShiftCont.jsx";
+import ShiftCont from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
 import { controlTime, saveTime } from "../helpers/timeCountHelper.js";
 
@@ -45,5 +45,4 @@ function Main() {
     </Container>
   );
 }
-
 export default Main;

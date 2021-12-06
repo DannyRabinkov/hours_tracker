@@ -1,6 +1,6 @@
 import React from "react";
 
-export function ShiftCont({ shift }) {
+function ShiftCont({ shift }) {
   return (
     <div>
       {shift.map((_shift) => (
@@ -11,3 +11,4 @@ export function ShiftCont({ shift }) {
     </div>
   );
 }
+export default ShiftCont;
