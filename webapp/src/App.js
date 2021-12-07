@@ -5,15 +5,15 @@ import Main from "./pages/Main";
 import { useState } from "react";
 
 function App() {
-  const [isLoggedIn, setLogged] = useState(false);
+  const [isAdminLoggedIn, setLogged] = useState(false);
 
   return (
     <div>
-      {!isLoggedIn && (
-        <SignIn getLogged={(isLoggedIn) => setLogged(isLoggedIn)} />
+      {!isAdminLoggedIn && (
+        <SignIn getLogged={(isAdminLoggedIn) => setLogged(isAdminLoggedIn)} />
       )}
-      {isLoggedIn && <Admin />}
-      <Main />
+      {isAdminLoggedIn && <Admin />}
+      {!isAdminLoggedIn && <Main />}
     </div>
   );
 }
