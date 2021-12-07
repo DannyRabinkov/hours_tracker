@@ -14,10 +14,14 @@ function SignUpComp() {
       Role: role,
       Password: password,
       Name: name,
-    }).then(() => {
-      alert("employee created successfuly!!");
-      window.location.reload(false);
-    });
+    })
+      .then(() => {
+        alert("employee created successfuly!!");
+        window.location.reload(false);
+      })
+      .catch(() => {
+        alert("Oops! Something went wrong!");
+      });
   };
   return (
     <>

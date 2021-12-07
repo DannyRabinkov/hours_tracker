@@ -13,10 +13,14 @@ function SignIn() {
     Axios.post("http://localhost:3000/api/users/login", {
       Phone: phone,
       Password: password,
-    }).then(() => {
-      alert("successful login!");
-      setSigned(true);
-    });
+    })
+      .then(() => {
+        alert("successful login!");
+        setSigned(true);
+      })
+      .catch(() => {
+        alert("Oops! Something went wrong!");
+      });
   };
 
   return (

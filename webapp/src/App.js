@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       {!isLoggedIn && <SignIn getLogged={isLogged} />}
-      {isLoggedIn && <Admin />}
+      {!isLoggedIn && <Admin />}
       <Main />
     </div>
   );

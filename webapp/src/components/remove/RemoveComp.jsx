@@ -11,10 +11,14 @@ function RemoveComp() {
   const removeEmp = () => {
     Axios.delete(useUrl, {
       Phone: phone,
-    }).then(() => {
-      alert("removed successfully");
-      window.location.reload(false);
-    });
+    })
+      .then(() => {
+        alert("removed successfully");
+        window.location.reload(false);
+      })
+      .catch(() => {
+        alert("Oops! Something went wrong!");
+      });
   };
 
   return (
