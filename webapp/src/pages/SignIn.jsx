@@ -53,10 +53,8 @@ function SignIn(props) {
             onClick={() => {
               login();
             }}
-            to="/Admin"
           >
-            {" "}
-            Sign-in{" "}
+            Sign-in
           </button>
         </div>
       </div>
