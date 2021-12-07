@@ -4,7 +4,7 @@ import { useState } from "react";
 import Axios from "axios";
 import { Main } from "./Main";
 
-function SignIn() {
+function SignIn(props) {
   const [signed, setSigned] = useState(false);
   const [phone, setLoginPhone] = useState("");
   const [password, setLoginPassword] = useState("");
@@ -16,7 +16,7 @@ function SignIn() {
     })
       .then(() => {
         alert("successful login!");
-        setSigned(true);
+        props.getLogged(true);
       })
       .catch(() => {
         alert("Oops! Something went wrong!");

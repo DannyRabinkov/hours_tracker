@@ -7,13 +7,12 @@ import { useState } from "react";
 function App() {
   const [isLoggedIn, setLogged] = useState(false);
 
-  const isLogged = () => {
-    setLogged(true);
-  };
   return (
     <div>
-      {!isLoggedIn && <SignIn getLogged={isLogged} />}
-      {!isLoggedIn && <Admin />}
+      {!isLoggedIn && (
+        <SignIn getLogged={(isLoggedIn) => setLogged(isLoggedIn)} />
+      )}
+      {isLoggedIn && <Admin />}
       <Main />
     </div>
   );
