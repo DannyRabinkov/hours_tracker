@@ -16,7 +16,7 @@ function Main() {
   };
 
   return (
-    <Container>
+    <div>
       <h1>Main Page</h1>
       <div className="container">
         <p>
@@ -42,7 +42,7 @@ function Main() {
         </button>
       </div>
       <ShiftCont shift={shiftArr} />
-    </Container>
+    </div>
   );
 }
 export default Main;
