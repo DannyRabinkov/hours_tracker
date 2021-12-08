@@ -1,13 +1,18 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
-import { Main } from "./Main";
 
-function SignIn(props) {
+function SignIn() {
   const [signed, setSigned] = useState(false);
   const [phone, setLoginPhone] = useState("");
   const [password, setLoginPassword] = useState("");
+
+  const baseUrl = "http://localhost:3000/api/users/";
+  const useUrl = baseUrl + phone;
+
+  let history1 = useHistory("/admin");
+  let history2 = useHistory("/main");
 
   const login = () => {
     Axios.post("http://localhost:3000/api/users/login", {
@@ -16,10 +21,32 @@ function SignIn(props) {
     })
       .then(() => {
         alert("successful login!");
-        props.getLogged(true);
+      })
+      .then(() => {
+        getAdmin();
       })
       .catch(() => {
         alert("Oops! Something went wrong!");
+      });
+  };
+
+  const getAdmin = () => {
+    Axios.get(useUrl, {
+      Phone: phone,
+    })
+      .then(() => {
+        if ("employee") history2.push("/main");
+        if ("Employer") history1.push("/admin");
+
+        alert("you Not employer");
+
+        /* if (!"Employer") {
+          alert("you are NOT employer");
+          history2.push("/main");
+        } */
+      })
+      .catch(() => {
+        alert("You are not the Admin!");
       });
   };
 
