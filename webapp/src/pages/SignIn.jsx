@@ -34,11 +34,9 @@ function SignIn() {
     Axios.get(useUrl, {
       Phone: phone,
     })
-      .then(() => {
-        if ("employee") history2.push("/main");
-        if ("Employer") history1.push("/admin");
-
-        alert("you Not employer");
+      .then((res) => {
+        if (res.data == "employee") history2.push("/main");
+        if (res.data == "Employer") history1.push("/admin");
 
         /* if (!"Employer") {
           alert("you are NOT employer");
