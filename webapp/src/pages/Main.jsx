@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import ShiftCont from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
-import { controlTime, saveTime } from "../helpers/timeCountHelper.js";
+import {
+  controlTime,
+  saveTime,
+  SaveShiftToDB,
+} from "../helpers/timeCountHelper.js";
 
 function Main() {
   const [isRunning, setRunning] = useState(false);
@@ -12,7 +16,7 @@ function Main() {
     setRunning(false);
     controlTime();
     let shiftObj = saveTime();
-    setShifts([...shiftArr, shiftObj]);
+    SaveShiftToDB(shiftObj, () => setShifts([...shiftArr, shiftObj]));
   };
 
   return (
