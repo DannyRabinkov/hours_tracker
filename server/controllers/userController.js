@@ -46,7 +46,7 @@ const getAllEmployees = async (req, res) => {
 const getAllEmployers = async (req, res) => {
   let users = await User.findAll({
     where: {
-      Role: "employer",
+      Role: "Employer",
     },
     attributes: ["Role", "Phone", "Password", "Name"],
   });
@@ -61,8 +61,22 @@ const getOneUser = async (req, res) => {
     where: { id: id },
     attributes: ["Role", "Phone", "Password", "Name"],
   });
-
   res.status(200).send(user);
+};
+
+//get employer or employee
+const getRole = async (req, res) => {
+  let Phone = req.params.Phone;
+  let user = await User.findOne({
+    where: { Phone: Phone },
+    attributes: ["Role", "Phone", "Password", "Name"],
+  });
+  if (user.Role === "Employer") {
+    res.status(200).send(user.Role);
+    res.send(true);
+  }
+  res.status(200).send(user.Role);
+  res.send(false);
 };
 
 //update user
@@ -73,7 +87,7 @@ const updateUser = async (req, res) => {
   res.status(200).send(user);
 };
 
-//delete user by id
+//delete user by phone
 const deleteUser = async (req, res) => {
   let Phone = req.params.Phone;
   await User.destroy({ where: { Phone: Phone } });
@@ -111,6 +125,7 @@ module.exports = {
   addUser,
   getAllEmployees,
   getAllEmployers,
+  getRole,
   getOneUser,
   updateUser,
   deleteUser,

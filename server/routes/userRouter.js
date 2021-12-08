@@ -9,7 +9,8 @@ router.post(
 router.post("/login", userController.login);
 router.get("/allEmployees", userController.getAllEmployees);
 router.get("/employers", userController.getAllEmployers);
-router.get("/:id", userController.getOneUser);
+router.get("/:Phone", userController.getRole);
+router.get("/getUser/:id", userController.getOneUser);
 router.put("/:id", userController.updateUser);
 router.delete("/:Phone", userController.deleteUser);
 
