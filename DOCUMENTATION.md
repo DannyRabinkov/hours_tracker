@@ -25,7 +25,7 @@ ROUTES:
 - create employee/employer: (POST) http://localhost:3000/api/users/addUser
 - login: (POST) http://localhost:3000/api/users/login
 - get all employees: (GET) http://localhost:3000/api/users/allEmployees/
-- get one employee: (GET) http://localhost:3000/api/users/'enter-id-here'
+- get one employee: (GET) http://localhost:3000/api/users/getUser/'enter-Phone-here'
 - update employee: (PUT) http://localhost:3000/api/users/'enter-id-here'
 - get employers: (GET) http://localhost:3000/api/users/employers
 - delete employee: (DELETE) http://localhost:3000/api/users/'enter-Phone-here'
