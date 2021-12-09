@@ -10,15 +10,6 @@ function App() {
   const [isLoggedIn, empsOnly] = useState(false);
 
   return (
-    /* {!isAdminLoggedIn && (
-        <SignIn
-          getLogged={(isAdminLoggedIn) => setLogged(isAdminLoggedIn)}
-          getUserLogged={(isLoggedIn) => setLoggedUser(isLoggedIn)}
-        />
-      )}
-      {isAdminLoggedIn && <Admin />}
-      {isLoggedIn && <Main />} */
-
     <Router>
       <Switch>
         <Route
