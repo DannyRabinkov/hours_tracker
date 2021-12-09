@@ -81,9 +81,9 @@ const getRole = async (req, res) => {
 
 //update user
 const updateUser = async (req, res) => {
-  let id = req.params.id;
+  let Phone = req.params.Phone;
 
-  const user = await User.update(req.body, { where: { id: id } });
+  const user = await User.update(req.body, { where: { Phone: Phone } });
   res.status(200).send(user);
 };
 

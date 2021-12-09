@@ -11,7 +11,7 @@ router.get("/allEmployees", userController.getAllEmployees);
 router.get("/employers", userController.getAllEmployers);
 router.get("/:Phone", userController.getRole);
 router.get("/getUser/:id", userController.getOneUser);
-router.put("/:id", userController.updateUser);
+router.put("/:Phone", userController.updateUser);
 router.delete("/:Phone", userController.deleteUser);
 
 module.exports = router;

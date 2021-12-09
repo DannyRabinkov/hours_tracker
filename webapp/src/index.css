@@ -2,11 +2,19 @@ html {
   position: relative;
   padding-bottom: 170px;
   min-height: 100%;
-  background-color: #e0fbfc;
 }
 
 body {
   height: 100%;
+}
+
+button {
+  margin: 1rem;
+}
+
+input {
+  padding: auto;
+  margin: 0.5rem;
 }
 
 
