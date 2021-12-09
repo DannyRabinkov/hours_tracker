@@ -2,7 +2,7 @@
 import Axios from "axios";
 import { useState } from "react";
 
-function SignUpComp() {
+function SignUpComp(props) {
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");

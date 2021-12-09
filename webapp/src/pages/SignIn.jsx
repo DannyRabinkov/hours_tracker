@@ -34,13 +34,12 @@ function SignIn(props) {
       Phone: phone,
     })
       .then((res) => {
-        if (res.data === "employee") {
-          props.logEmployee(true);
-          history2.push("/main");
-        }
         if (res.data === "Employer") {
           props.logAdmin(true);
           history1.push("/admin");
+        } else {
+          props.logEmployee(true);
+          history2.push("/main");
         }
       })
       .catch(() => {

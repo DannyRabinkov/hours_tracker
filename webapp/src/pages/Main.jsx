@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import Axios from "axios";
 import { Container } from "react-bootstrap";
 import ShiftCont from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
@@ -21,8 +22,21 @@ function Main(props) {
     setRunning(false);
     controlTime();
     let shiftObj = saveTime();
-    //SaveShiftToDB(shiftObj, () => setShifts([...shiftArr, shiftObj]));
+    // SaveShiftToDB(shiftObj, () => setShifts([...shiftArr, shiftObj]));
   };
+
+  /* function SaveShiftToDB(obj, callback) {
+  Axios.post("http://localhost:3000/api/session/addSession",{
+    
+  })
+ */
+
+  //
+  //
+  //.then((res) => {
+  //callback();
+  //})
+  //}
 
   return (
     <div>
