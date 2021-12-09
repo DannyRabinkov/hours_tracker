@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ShiftCont from "../components/shifts/ShiftCont.jsx";
 import "../helpers/timeCountHelper.js";
@@ -8,15 +9,19 @@ import {
   SaveShiftToDB,
 } from "../helpers/timeCountHelper.js";
 
-function Main() {
+function Main(props) {
   const [isRunning, setRunning] = useState(false);
   const [shiftArr, setShifts] = useState([]);
+
+  if (!props.empsOnly) {
+    return <Redirect to="/" />;
+  }
 
   let createShiftStamp = () => {
     setRunning(false);
     controlTime();
     let shiftObj = saveTime();
-    SaveShiftToDB(shiftObj, () => setShifts([...shiftArr, shiftObj]));
+    //SaveShiftToDB(shiftObj, () => setShifts([...shiftArr, shiftObj]));
   };
 
   return (

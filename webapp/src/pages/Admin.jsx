@@ -2,10 +2,15 @@ import { useState } from "react";
 import React from "react";
 import SignUpComp from "../components/signHelper/SignUpComp";
 import RemoveComp from "../components/remove/RemoveComp";
+import { Redirect } from "react-router-dom";
 
-function Admin() {
+function Admin(props) {
   const [isAdd, setAdd] = useState(false);
   const [isRemove, setRemove] = useState(false);
+
+  if (!props.adminOnly) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

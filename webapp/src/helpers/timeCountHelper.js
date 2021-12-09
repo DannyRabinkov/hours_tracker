@@ -76,12 +76,12 @@ export function saveTime() {
   return shift;
 }
 
-export function SaveShiftToDB(obj, callback) {
-  // axios to node for saving obj in db
-  //
-  //
-  //
-  //.then((res) => {
-  callback();
-  //})
-}
+//export function SaveShiftToDB(obj, callback) {
+// axios to node for saving obj in db
+//
+//
+//
+//.then((res) => {
+//callback();
+//})
+//}

@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Axios from "axios";
 
-function SignIn() {
-  const [signed, setSigned] = useState(false);
+function SignIn(props) {
   const [phone, setLoginPhone] = useState("");
   const [password, setLoginPassword] = useState("");
 
@@ -35,16 +34,17 @@ function SignIn() {
       Phone: phone,
     })
       .then((res) => {
-        if (res.data == "employee") history2.push("/main");
-        if (res.data == "Employer") history1.push("/admin");
-
-        /* if (!"Employer") {
-          alert("you are NOT employer");
+        if (res.data === "employee") {
+          props.logEmployee(true);
           history2.push("/main");
-        } */
+        }
+        if (res.data === "Employer") {
+          props.logAdmin(true);
+          history1.push("/admin");
+        }
       })
       .catch(() => {
-        alert("You are not the Admin!");
+        alert("You Are NOT From Here!!");
       });
   };
 

@@ -6,8 +6,8 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
-  /* const [isAdminLoggedIn, setLogged] = useState(false);
-  const [isLoggedIn, setLoggedUser] = useState(false); */
+  const [isAdminLoggedIn, adminOnly] = useState(false);
+  const [isLoggedIn, empsOnly] = useState(false);
 
   return (
     /* {!isAdminLoggedIn && (
@@ -21,9 +21,26 @@ function App() {
 
     <Router>
       <Switch>
-        <Route exact path="/" component={SignIn} />
-        <Route exact path="/admin" component={Admin} />
-        <Route exact path="/main" component={Main} />
+        <Route
+          exact
+          path="/"
+          component={() => (
+            <SignIn
+              logEmployee={(isLoggedIn) => empsOnly(isLoggedIn)}
+              logAdmin={(isAdminLoggedIn) => adminOnly(isAdminLoggedIn)}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/admin"
+          component={() => <Admin adminOnly={isAdminLoggedIn} />}
+        />
+        <Route
+          exact
+          path="/main"
+          component={() => <Main empsOnly={isLoggedIn} />}
+        />
         {/* <Route exact path="*" component={Admin} /> */}
       </Switch>
     </Router>
