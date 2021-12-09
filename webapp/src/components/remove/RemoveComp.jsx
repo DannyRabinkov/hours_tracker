@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Axios from "axios";
 
-function RemoveComp() {
+function RemoveComp(props) {
   const [phone, setRemPhone] = useState("");
 
   const baseUrl = "http://localhost:3000/api/users/";
@@ -14,7 +14,7 @@ function RemoveComp() {
     })
       .then(() => {
         alert("removed successfully");
-        window.location.reload(false);
+        props.doneRemove(false);
       })
       .catch(() => {
         alert("Oops! Something went wrong!");

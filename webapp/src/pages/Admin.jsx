@@ -49,8 +49,10 @@ function Admin(props) {
             Cancel
           </button>
           {!isAdd}
-          {isRemove && <RemoveComp />}
-          {isAdd && <SignUpComp />}
+          {isRemove && (
+            <RemoveComp doneRemove={(isRemove) => setRemove(isRemove)} />
+          )}
+          {isAdd && <SignUpComp doneAdding={(isAdd) => setAdd(isAdd)} />}
         </div>
       </div>
     </>

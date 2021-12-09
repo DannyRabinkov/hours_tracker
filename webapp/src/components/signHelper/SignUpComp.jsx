@@ -17,7 +17,7 @@ function SignUpComp(props) {
     })
       .then(() => {
         alert("employee created successfuly!!");
-        window.location.reload(false);
+        props.doneAdding(false);
       })
       .catch(() => {
         alert("Oops! Something went wrong!");
