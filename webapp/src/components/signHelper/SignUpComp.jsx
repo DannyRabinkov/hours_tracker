@@ -26,7 +26,7 @@ function SignUpComp(props) {
   return (
     <>
       <div className="form">
-        <label>Phone</label>
+        <label>Phone:</label>
         <input
           type="text"
           name="phone"
@@ -37,7 +37,7 @@ function SignUpComp(props) {
           }}
         />
         <br />
-        <label>Role</label>
+        <label>Role:</label>
         <input
           type="text"
           name="role"
@@ -48,7 +48,7 @@ function SignUpComp(props) {
           }}
         />
         <br />
-        <label>Password</label>
+        <label>Password:</label>
         <input
           type="text"
           name="password"
@@ -59,7 +59,7 @@ function SignUpComp(props) {
           }}
         />
         <br />
-        <label>Name</label>
+        <label>Name:</label>
         <input
           type="text"
           name="name"

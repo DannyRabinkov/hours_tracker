@@ -34,6 +34,7 @@ function RemoveComp(props) {
             setRemPhone(e.target.value);
           }}
         />
+        <br />
         <button
           onClick={() => {
             removeEmp();

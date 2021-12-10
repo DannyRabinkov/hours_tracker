@@ -15,7 +15,6 @@ function UpdateComp(props) {
     Axios.put(useUrl, {
       Phone: phone,
       Role: role,
-      Password: password,
       Name: name,
     })
       .then(() => {
@@ -50,17 +49,7 @@ function UpdateComp(props) {
             setUpdateRole(e.target.value);
           }}
         />
-        <br />
-        <label>Password: </label>
-        <input
-          type="text"
-          name="password"
-          placeholder="Password"
-          onChange={(e) => {
-            e.preventDefault();
-            setUpdatePass(e.target.value);
-          }}
-        />
+
         <br />
         <label>Name: </label>
         <input

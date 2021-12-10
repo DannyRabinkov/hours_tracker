@@ -35,10 +35,13 @@ function SignIn(props) {
     })
       .then((res) => {
         if (res.data === "Employer") {
-          props.logAdmin(true);
+          localStorage.setItem("token", "Dani De Admin");
+          props.logAdmin();
           history1.push("/admin");
-        } else {
-          props.logEmployee(true);
+        }
+        if (res.data !== "Employer") {
+          localStorage.setItem("token", "Dani De Employee");
+          props.logEmployee();
           history2.push("/main");
         }
       })

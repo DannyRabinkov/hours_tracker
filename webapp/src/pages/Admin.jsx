@@ -4,11 +4,14 @@ import SignUpComp from "../components/signHelper/SignUpComp";
 import RemoveComp from "../components/remove/RemoveComp";
 import { Redirect } from "react-router-dom";
 import UpdateComp from "../components/update/UpdateComp";
+import AllEmpComp from "../components/allEmployees/AllEmpComp";
 
 function Admin(props) {
   const [isAdd, setAdd] = useState(false);
   const [isRemove, setRemove] = useState(false);
   const [isUpdate, setUpdate] = useState(false);
+  const [isAll, setAll] = useState(false);
+  const [employeeArr, setEmployees] = useState([]);
 
   if (!props.adminOnly) {
     return <Redirect to="/" />;
@@ -16,7 +19,7 @@ function Admin(props) {
 
   return (
     <>
-      <h1>On This Page You Can Add Employee</h1>
+      <h1>This Is You'r Admin Page</h1>
       <div className="container">
         <div className="btnToUse">
           <button
@@ -26,6 +29,7 @@ function Admin(props) {
               setAdd(true);
               setRemove();
               setUpdate();
+              setAll();
             }}
           >
             Add Employee
@@ -37,6 +41,7 @@ function Admin(props) {
               setRemove(true);
               setAdd();
               setUpdate();
+              setAll();
             }}
           >
             Remove Employee
@@ -49,16 +54,31 @@ function Admin(props) {
               setUpdate(true);
               setAdd();
               setRemove();
+              setAll();
             }}
           >
             Update Employee
           </button>
 
           <button
+            id="btn-update"
+            hidden={isUpdate ? "hidden" : ""}
+            onClick={() => {
+              setAll(true);
+              setUpdate();
+              setAdd();
+              setRemove();
+            }}
+          >
+            Show All Employees
+          </button>
+
+          <button
             id="btn-cancel"
-            hidden={isAdd || isRemove || isUpdate ? "" : "hidden"}
+            hidden={isAdd || isRemove || isUpdate || isAll ? "" : "hidden"}
             onClick={() => {
               setAdd(false);
+              setAll(false);
               setRemove(false);
               setUpdate(false);
             }}
@@ -73,6 +93,7 @@ function Admin(props) {
           {isUpdate && (
             <UpdateComp doneUpdate={(isUpdate) => setUpdate(isUpdate)} />
           )}
+          {isAll && <AllEmpComp showEmployees={employeeArr} />}
         </div>
       </div>
     </>
